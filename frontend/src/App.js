@@ -19,7 +19,7 @@ function App() {
       <Route path="/create-team" element={<CreateTeam />} />
       <Route path="/create-task" element={<CreateTask />} />
       <Route path="/profile/*" element={<Profile />} />
-      <Route path="/task/:id" element={<Task />} />
+      <Route path="/tasks/:id" element={<Task />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Home />} />

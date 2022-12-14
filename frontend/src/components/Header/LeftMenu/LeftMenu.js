@@ -56,7 +56,7 @@ export function Menu() {
     {
       id: 6,
       name: "Task 21",
-      link: "/task/21",
+      link: "/tasks/21",
       icon: <BookmarkAddedIcon />,
     },
     {

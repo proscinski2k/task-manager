@@ -1,16 +1,24 @@
-import { useState } from "react";
-import MenuDesktop from "./MenuDesktop";
-import MenuMobile from "./MenuMobile";
 import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import {
+  InputBase,
+  Typography,
+  Toolbar,
+  Box,
+  AppBar,
+  Avatar,
+  Divider,
+  MenuItem,
+} from "@mui/material";
+import {
+  Search as SearchIcon,
+  CalendarMonth as CalendarMonthIcon,
+  Edit as EditIcon,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import LeftMenu from "./LeftMenu/LeftMenu";
+import StyledMenu from "./StyledMenu";
+
+import { useState } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,21 +61,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(false);
-  // const isMenuOpen = anchorEl;
-  const handleProfileMenuOpen = (event) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleMenuClose = () => {
+  const handleClose = () => {
     setAnchorEl(null);
-    handleMobileMenuClose();
   };
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const menuId = "primary-search-account-menu";
 
   return (
     <Box sx={{ flexGrow: 1, zIndex: 999, position: "relative" }}>
@@ -99,29 +100,41 @@ export default function Header() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* add menu here */}
+            <Avatar
+              onClick={handleClick}
+              alt="Remy Sharp"
+              src="/static/images/avatar/1.jpg"
+            />
+            <StyledMenu
+              id="demo-customized-menu"
+              MenuListProps={{
+                "aria-labelledby": "demo-customized-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose} disableRipple>
+                <EditIcon />
+                Edit
+              </MenuItem>
+              <MenuItem onClick={handleClose} disableRipple>
+                <EditIcon />
+                Duplicate
+              </MenuItem>
+              <Divider sx={{ my: 0.5 }} />
+              <MenuItem onClick={handleClose} disableRipple>
+                <EditIcon />
+                Archive
+              </MenuItem>
+              <MenuItem onClick={handleClose} disableRipple>
+                <EditIcon />
+                More
+              </MenuItem>
+            </StyledMenu>
           </Box>
         </Toolbar>
       </AppBar>
-      <MenuMobile
-        mobileMenuId={mobileMenuId}
-        anchorEl={anchorEl}
-        mobileMoreAnchorEl={mobileMoreAnchorEl}
-        onMobileMenuClose={() => {
-          handleMobileMenuClose();
-        }}
-        onProfileMenuOpen={() => {
-          handleProfileMenuOpen();
-        }}
-      />
-      <MenuDesktop
-        menuId={menuId}
-        onMenuClose={() => {
-          handleMenuClose();
-        }}
-        isMenuOpen={anchorEl}
-        anchorEl={anchorEl}
-      />
     </Box>
   );
 }
