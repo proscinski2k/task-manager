@@ -1,29 +1,44 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./view/Home/Home";
+
 import Header from "./components/Header/Header";
-import Profile from "./view/Profile/Profile";
-import Task from "./view/Task/Task";
-import Register from "./view/Register/Register";
-import Login from "./view/Login/Login";
-import PageNotFound from "./view/PageNotFound/PageNotFound";
 import Layout100 from "./components/Layout/Layout1";
 import Footer from "./components/Footer/Footer";
-import CreateTask from "./view/CreateTask/CreateTask";
-import CreateTeam from "./view/CreateTeam/CreateTeam";
+
+import HomeView from "./view/Home/HomeView";
+import ProfileView from "./view/Profile/ProfileView";
+import TaskView from "./view/Task/TaskView";
+import RegisterView from "./view/Register/RegisterView";
+import LoginView from "./view/Login/LoginView";
+import PageNotFoundView from "./view/PageNotFound/PageNotFoundView";
+import CreateTaskView from "./view/CreateTask/CreateTaskView";
+import CreateTeamView from "./view/CreateTeam/CreateTeamView";
+import ProjectsView from "./view/Projects/ProjectsView";
+import ProjectView from "./view/Project/ProjectView";
+import ProjectTasksView from "./view/ProjectTasks/ProjectTasksView";
 
 import "./App.css";
 
 function App() {
   const content = (
     <Routes>
-      <Route path="/create-team" element={<CreateTeam />} />
-      <Route path="/create-task" element={<CreateTask />} />
-      <Route path="/profile/*" element={<Profile />} />
-      <Route path="/tasks/:id" element={<Task />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Home />} />
-      <Route path="*" element={<PageNotFound />} />
+      <Route path="/create-team" element={<CreateTeamView />} />
+      <Route path="/create-task" element={<CreateTaskView />} />
+      <Route path="/profile/:user/*" element={<ProfileView />} />
+      <Route path="/projects" element={<ProjectsView />} />
+      <Route path="/projects/:projectTitle" element={<ProjectView />} />
+      <Route
+        path="/projects/:projectTitle/tasks"
+        element={<ProjectTasksView />}
+      />
+      <Route
+        path="/projects/:projectTitle/create-task"
+        element={<CreateTaskView />}
+      />
+      <Route path="/projects/:projectTitle/tasks/:id" element={<TaskView />} />
+      <Route path="/register" element={<RegisterView />} />
+      <Route path="/login" element={<LoginView />} />
+      <Route path="/" element={<HomeView />} />
+      <Route path="*" element={<PageNotFoundView />} />
     </Routes>
   );
 

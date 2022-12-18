@@ -17,7 +17,7 @@ export default function Menu() {
     {
       id: 1,
       name: "Change basic data",
-      link: "/profile/basic-data",
+      link: "/profile/adrian-proscinski/basic-data",
       icon: (
         <PersonIcon>
           <ContentCut fontSize="small" />
@@ -27,7 +27,7 @@ export default function Menu() {
     {
       id: 2,
       name: "Change avatar",
-      link: "/profile/profile-avatar",
+      link: "/profile/adrian-proscinski/profile-avatar",
       icon: (
         <AccountCircleIcon>
           <ContentCut fontSize="small" />
@@ -37,7 +37,7 @@ export default function Menu() {
     {
       id: 3,
       name: "Change password",
-      link: "/profile/change-password",
+      link: "/profile/adrian-proscinski/change-password",
       icon: (
         <LockResetIcon>
           <ContentCut fontSize="small" />
@@ -50,7 +50,7 @@ export default function Menu() {
     {
       id: 1,
       name: "Stats",
-      link: "/profile/stats",
+      link: "/profile/adrian-proscinski/stats",
       icon: (
         <QueryStatsIcon>
           <ContentCut fontSize="small" />

@@ -29,7 +29,7 @@ import Contractor from "./Components/Contractor/Contractor";
 import RegisteredTime from "./Components/RegisteredTime/RegisteredTime";
 import GitHubBranch from "./Components/GitHubBranch/GitHubBranch";
 import Comments from "./Components/Comments/Comments";
-import Breadcrumbs from "./Components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 export default function Task(props) {
   const { id } = useParams();

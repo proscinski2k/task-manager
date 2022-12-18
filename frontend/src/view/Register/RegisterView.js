@@ -1,16 +1,20 @@
 import InputTypeText from "../../components/Forms/InputTypeText";
 import InputTypePassword from "../../components/Forms/InputTypePassword";
 import Grid from "@mui/system/Unstable_Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
 import registerImage from "../../assets/images/register.jpg";
 import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import { memo, useState } from "react";
-import Skeleton from "@mui/material/Skeleton";
+import {
+  Skeleton,
+  Stack,
+  Button,
+  Card,
+  CardContent,
+  CardActions,
+} from "@mui/material";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 function Register() {
   const imgSkeleton = (
@@ -20,7 +24,12 @@ function Register() {
   const [loaded, setLoaded] = useState(false);
   return (
     <>
-      <Grid xs={6} style={{ marginTop: "-60px" }}>
+      <Grid xs={12}>
+        <Stack spacing={2} sx={{ display: "block", mb: 2 }}>
+          <Breadcrumbs />
+        </Stack>
+      </Grid>
+      <Grid xs={6}>
         {loaded ? null : imgSkeleton}
         <img
           style={{

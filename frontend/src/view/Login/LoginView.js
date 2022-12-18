@@ -10,7 +10,8 @@ import loginImage from "../../assets/images/login.jpg";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { Link } from "react-router-dom";
 import { memo, useState } from "react";
-import Skeleton from "@mui/material/Skeleton";
+import { Skeleton, Stack } from "@mui/material";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 function Login() {
   const imgSkeleton = (
@@ -20,7 +21,12 @@ function Login() {
   const [loaded, setLoaded] = useState(false);
   return (
     <>
-      <Grid xs={6} style={{ marginTop: "-60px" }}>
+      <Grid xs={12}>
+        <Stack spacing={2} sx={{ display: "block", mb: 2 }}>
+          <Breadcrumbs />
+        </Stack>
+      </Grid>
+      <Grid xs={6}>
         {loaded ? null : imgSkeleton}
         <img
           style={{

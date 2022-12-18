@@ -32,7 +32,7 @@ export function Menu() {
     {
       id: 8,
       name: "Profile",
-      link: "/profile",
+      link: "/profile/adrian-proscinski",
       icon: <AccountCircleIcon />,
     },
     {
@@ -56,7 +56,25 @@ export function Menu() {
     {
       id: 6,
       name: "Task 21",
-      link: "/tasks/21",
+      link: "/projects/farm-game/tasks/5",
+      icon: <BookmarkAddedIcon />,
+    },
+    {
+      id: 11,
+      name: "Tasks farm game",
+      link: "/projects/farm-game/tasks",
+      icon: <BookmarkAddedIcon />,
+    },
+    {
+      id: 9,
+      name: "Project farm game",
+      link: "/projects/farm-game",
+      icon: <BookmarkAddedIcon />,
+    },
+    {
+      id: 10,
+      name: "Projects",
+      link: "/projects",
       icon: <BookmarkAddedIcon />,
     },
     {
@@ -71,25 +89,25 @@ export function Menu() {
     {
       id: 1,
       name: "Basic data",
-      link: "/profile/basic-data",
+      link: "/profile/adrian-proscinski/basic-data",
       icon: <PersonIcon />,
     },
     {
       id: 2,
       name: "Profile avatar",
-      link: "/profile/avatar",
+      link: "/profile/adrian-proscinski/avatar",
       icon: <FaceIcon />,
     },
     {
       id: 3,
       name: "Change password",
-      link: "/profile/change-password",
+      link: "/profile/adrian-proscinski/change-password",
       icon: <LockResetIcon />,
     },
     {
       id: 4,
       name: "Stats",
-      link: "/profile/stats",
+      link: "/profile/adrian-proscinski/stats",
       icon: <QueryStatsIcon />,
     },
   ];

@@ -1,7 +1,8 @@
 import pageNotFoundImg from "../../assets/images/not_found.jpg";
 import Grid from "@mui/system/Unstable_Grid";
-import Skeleton from "@mui/material/Skeleton";
+import { Skeleton, Stack } from "@mui/material";
 import { useState } from "react";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 export default function PageNotFound() {
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -11,6 +12,11 @@ export default function PageNotFound() {
   );
   return (
     <>
+      <Grid xs={12}>
+        <Stack spacing={2} sx={{ display: "block", mb: 2 }}>
+          <Breadcrumbs />
+        </Stack>
+      </Grid>
       <Grid xs={3}></Grid>
       <Grid xs={6}>
         {!imgLoaded ? imgSkeleton : null}

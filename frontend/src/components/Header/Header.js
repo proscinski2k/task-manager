@@ -6,19 +6,13 @@ import {
   Box,
   AppBar,
   Avatar,
-  Divider,
-  MenuItem,
 } from "@mui/material";
 import {
   Search as SearchIcon,
   CalendarMonth as CalendarMonthIcon,
-  Edit as EditIcon,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import LeftMenu from "./LeftMenu/LeftMenu";
-import StyledMenu from "./StyledMenu";
-
-import { useState } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,21 +55,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <Box sx={{ flexGrow: 1, zIndex: 999, position: "relative" }}>
       <AppBar position="static">
         <Toolbar>
           <LeftMenu />
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: "none" }}>
             <Typography
               variant="h6"
               noWrap
@@ -100,38 +85,7 @@ export default function Header() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Avatar
-              onClick={handleClick}
-              alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
-            />
-            <StyledMenu
-              id="demo-customized-menu"
-              MenuListProps={{
-                "aria-labelledby": "demo-customized-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose} disableRipple>
-                <EditIcon />
-                Edit
-              </MenuItem>
-              <MenuItem onClick={handleClose} disableRipple>
-                <EditIcon />
-                Duplicate
-              </MenuItem>
-              <Divider sx={{ my: 0.5 }} />
-              <MenuItem onClick={handleClose} disableRipple>
-                <EditIcon />
-                Archive
-              </MenuItem>
-              <MenuItem onClick={handleClose} disableRipple>
-                <EditIcon />
-                More
-              </MenuItem>
-            </StyledMenu>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </Box>
         </Toolbar>
       </AppBar>
