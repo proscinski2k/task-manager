@@ -16,6 +16,7 @@ export default function InputTypePassword(props) {
     showPassword: false,
   });
   const handleChange = (prop) => (event) => {
+    props.onChange(event);
     setValues({ ...values, [prop]: event.target.value });
   };
   const handleClickShowPassword = () => {

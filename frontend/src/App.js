@@ -15,6 +15,7 @@ import CreateTeamView from "./view/CreateTeam/CreateTeamView";
 import ProjectsView from "./view/Projects/ProjectsView";
 import ProjectView from "./view/Project/ProjectView";
 import ProjectTasksView from "./view/ProjectTasks/ProjectTasksView";
+import { SnackbarProvider } from 'notistack';
 
 import "./App.css";
 
@@ -72,7 +73,12 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Layout100 header={<Header />} content={content} footer={<Footer />} />
+        <SnackbarProvider 
+          maxSnack={8} 
+          autoHideDuration={4000}  
+        >
+          <Layout100 header={<Header />} content={content} footer={<Footer />} />
+        </SnackbarProvider>
       </Router>
     </div>
   );

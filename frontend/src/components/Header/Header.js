@@ -6,6 +6,7 @@ import {
   Box,
   AppBar,
   Avatar,
+  Button,
 } from "@mui/material";
 import {
   Search as SearchIcon,
@@ -13,6 +14,8 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import LeftMenu from "./LeftMenu/LeftMenu";
+
+import { useSelector } from 'react-redux'
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -54,7 +57,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
+
 export default function Header() {
+  const currentUser = useSelector((state) => state.currentUser);
   return (
     <Box sx={{ flexGrow: 1, zIndex: 999, position: "relative" }}>
       <AppBar position="static">
@@ -85,7 +92,13 @@ export default function Header() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            {
+              currentUser.data.firstname ? (
+              <Link to={`profile/${currentUser.data.save_url}`}>
+                <Avatar alt={currentUser.data.firstname} src="/static/images/avatar/1.jpg" />
+              </Link>
+              ) : null
+            }
           </Box>
         </Toolbar>
       </AppBar>

@@ -10,7 +10,7 @@ export class UsersController {
     @Public()
     @Post('register')
     registerNewUser(@Body() registerNewUserDto: RegisterNewUserDto){
-       return this.userService.registerUser(registerNewUserDto.login, registerNewUserDto.email, registerNewUserDto.password);
+       return this.userService.registerUser(registerNewUserDto.login, registerNewUserDto.email, registerNewUserDto.password, registerNewUserDto.firstname, registerNewUserDto.lastname);
     }
 
 }

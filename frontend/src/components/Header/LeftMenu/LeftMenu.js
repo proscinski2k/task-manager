@@ -6,7 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 
@@ -24,17 +24,15 @@ import PersonIcon from "@mui/icons-material/Person";
 import FaceIcon from "@mui/icons-material/Face";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import { useSelector } from 'react-redux';
 
 export function Menu() {
+  const currentUser = useSelector((state) => state.currentUser);
+  const [loggedMenu, setLoggedMenu] = useState([]);
+
   const mainMenuData = [
     { id: 1, name: "Home", link: "/", icon: <HomeIcon /> },
     { id: 2, name: "Login", link: "/login", icon: <ExitToAppIcon /> },
-    {
-      id: 8,
-      name: "Profile",
-      link: "/profile/adrian-proscinski",
-      icon: <AccountCircleIcon />,
-    },
     {
       id: 3,
       name: "Register",
@@ -85,32 +83,42 @@ export function Menu() {
     },
   ];
 
-  const profileMenuData = [
+useEffect(()=>{
+  setLoggedMenu([
+    {
+      id: 8,
+      name: "Profile",
+      link: `profile/${currentUser.data.save_url}`,
+      icon: <AccountCircleIcon />,
+    },
     {
       id: 1,
       name: "Basic data",
-      link: "/profile/adrian-proscinski/basic-data",
+      link: `/profile/${currentUser.data.save_url}/basic-data`,
       icon: <PersonIcon />,
     },
     {
       id: 2,
       name: "Profile avatar",
-      link: "/profile/adrian-proscinski/avatar",
+      link: `/profile/${currentUser.data.save_url}/avatar`,
       icon: <FaceIcon />,
     },
     {
       id: 3,
       name: "Change password",
-      link: "/profile/adrian-proscinski/change-password",
+      link: `/profile/${currentUser.data.save_url}/change-password`,
       icon: <LockResetIcon />,
     },
     {
       id: 4,
       name: "Stats",
-      link: "/profile/adrian-proscinski/stats",
+      link: `/profile/${currentUser.data.save_url}/stats`,
       icon: <QueryStatsIcon />,
     },
-  ];
+  ]);
+}, [])
+
+  
   return (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
@@ -123,9 +131,11 @@ export function Menu() {
           </ListItem>
         ))}
       </List>
+      {currentUser.data.firstname ? (
+        <>
       <Divider />
       <List>
-        {profileMenuData.map((item) => (
+        {loggedMenu.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton to={item.link} component={Link}>
               <ListItemIcon>{item.icon}</ListItemIcon>
@@ -133,7 +143,7 @@ export function Menu() {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
+      </List></>) : null }
     </Box>
   );
 }
